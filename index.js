@@ -28,4 +28,4 @@ async function main() {
 
 main();
 
-app.listen(3000, () => { console.log(`Now server is listening on http://localhost:3000`) });
+app.listen(process.env.PORT, () => { console.log(`Now server is listening on http://localhost:${process.env.PORT}`) });
