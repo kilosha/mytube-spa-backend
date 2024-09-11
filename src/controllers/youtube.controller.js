@@ -3,13 +3,8 @@ import YoutubeServices from "../services/youtube.service.js";
 class YoutubeControllers {
     async getVideos(req, res) {
         try {
-            if (req.body.searchText) {
-                const videos = await YoutubeServices.getVideos(req.body.searchText, req.body.maxResults);
-                res.send(videos);
-            } else {
-                throw new Error("Не ввели ничего(")
-            }
-
+            const videos = await YoutubeServices.getVideos(req.query);
+            res.send(videos);
         } catch (e) {
             //Sentry.captureException(e);
             res.status(400).send({ message: e.message });
